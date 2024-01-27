@@ -31,13 +31,15 @@ def create_csv_header():
       csv_writer = csv.writer(data_file)
       header = list(output[0].keys())
       header.insert(0, "org_slug")
+      header.insert(1, "source_url")
       csv_writer.writerow(header)
 
-def to_csv(org_slug, result):
+def to_csv(source_url, org_slug, result):
     output = result['data']['expenses']['nodes']
     with open('data_file.csv', 'a', newline='') as data_file: 
       csv_writer = csv.writer(data_file)
       for expense in output:
           value = list(expense.values()) 
           value.insert(0, org_slug)
+          value.insert(1, source_url)
           csv_writer.writerow(value)

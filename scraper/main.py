@@ -31,7 +31,7 @@ def run_one(limit: int):
         res = fetch_result(query)
         with open('result.json', 'r') as json_file:
           data = json.load(json_file)
-          to_csv(org_slug=slug, result=data)
+          to_csv(source_url=f"https://opencollective.com/{slug}", org_slug=slug, result=data)
         org_slug = slug
 
     return org_slug
@@ -46,4 +46,4 @@ def run_many(limit: int):
         res = fetch_result(query)
         with open('result.json', 'r') as json_file:
           data = json.load(json_file)
-          to_csv(org_slug=slug, result=data)
+          to_csv(source_url=f"https://opencollective.com/{slug}", org_slug=slug, result=data)
